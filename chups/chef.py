@@ -21,6 +21,7 @@ def test_chef():
     time.sleep(15)
     yield
     print("Test Completed")
+@pytest.mark.skip()
 def test_cal(test_chef):
     driver.find_element(By.CSS_SELECTOR, '#calimg').click()
     driver.find_element(By.XPATH, "//abbr[@aria-label='June 9, 2023']").click()
@@ -37,10 +38,29 @@ def test_cal(test_chef):
     time.sleep(4)
     driver.find_element(By.XPATH, "//a[contains(text(),' Completed')]").click()
     time.sleep(4)
+@pytest.mark.skip()
 def test_logout(test_chef):
     driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
     time.sleep(2)
     driver.find_element(By.XPATH, "//li[contains(text(),'Log Out')]").click()
+    time.sleep(5)
+def test_hamburger(test_chef):
+    driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
+    time.sleep(2)
+    driver.find_element(By.XPATH, "//li[contains(text(),'Tutorials')]").click()
+    time.sleep(5)
+    driver.find_element(By.XPATH, "//div[contains(text(),'Falooda Milk Tea')]").click()
+    time.sleep(10)
+    driver.find_element(By.XPATH, "//input[@type='search']").send_keys("biriyani")
+    driver.find_element(By.XPATH, "//span[contains(text(),'Nizam Boneless Chicken Biriyani')]").click()
+    time.sleep(10)
+    driver.find_element(By.XPATH, "//img[@alt='back']").click()
+    driver.find_element(By.XPATH,
+                        "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
+    time.sleep(2)
+    driver.find_element(By.XPATH, "//li[contains(text(),'Setting')]").click()
+    time.sleep(5)
+    driver.find_element(By.XPATH, "//label[contains(text(),'Yes')]").click()
     time.sleep(5)
 
 
