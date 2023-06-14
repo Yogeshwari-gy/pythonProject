@@ -21,10 +21,10 @@ def test_chef():
     time.sleep(15)
     yield
     print("Test Completed")
-@pytest.mark.skip()
+
 def test_cal(test_chef):
     driver.find_element(By.CSS_SELECTOR, '#calimg').click()
-    driver.find_element(By.XPATH, "//abbr[@aria-label='June 9, 2023']").click()
+    driver.find_element(By.XPATH, "//abbr[@aria-label='June 10, 2023']").click()
     driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
     time.sleep(2)
     driver.find_element(By.XPATH, "//li[contains(text(),'KOT')]").click()
@@ -44,6 +44,7 @@ def test_logout(test_chef):
     time.sleep(2)
     driver.find_element(By.XPATH, "//li[contains(text(),'Log Out')]").click()
     time.sleep(5)
+@pytest.mark.skip()
 def test_hamburger(test_chef):
     driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
     time.sleep(2)
