@@ -7,6 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 import time
 import pytest
+import allure
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture()
 def test_packer():
     global driver
@@ -19,11 +21,12 @@ def test_packer():
     driver.find_element(By.ID, "exampleFormControlInput2").send_keys("welcome123")
     time.sleep(4)
     driver.find_element(By.XPATH, "//button[contains(text(),'Sign In')]").click()
-    time.sleep(10)
+    time.sleep(15)
+@allure.severity(allure.severity_level.BLOCKER)
 def test_pack(test_packer):
     driver.find_element(By.CSS_SELECTOR,"#calimg").click()
     time.sleep(4)
-    driver.find_element(By.XPATH, "//abbr[@aria-label='June 9, 2023']").click()
+    driver.find_element(By.XPATH, "//abbr[@aria-label='June 16, 2023']").click()
     time.sleep(2)
     driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
     time.sleep(2)
@@ -40,8 +43,8 @@ def test_pack(test_packer):
     # time.sleep(2)
     driver.find_element(By.XPATH, "//div[contains(@class, 'cursor-pointer')]/IMG[1]").click()
     time.sleep(4)
-
     driver.close()
+@allure.severity(allure.severity_level.BLOCKER)
 def testrunner(test_packer):
     driver.find_element(By.XPATH, "//BUTTON[@id='dropdown-autoclose-inside']").click()
     time.sleep(2)
@@ -49,10 +52,10 @@ def testrunner(test_packer):
     time.sleep(4)
     driver.find_element(By.CSS_SELECTOR,"#calimg").click()
     time.sleep(4)
-    driver.find_element(By.XPATH, "//abbr[@aria-label='June 8, 2023']").click()
+    driver.find_element(By.XPATH, "//abbr[@aria-label='June 18, 2023']").click()
     time.sleep(2)
     for i in range(2):
-        driver.find_element(By.XPATH, "//div[contains(@class, 'container-fluaid')]/DIV[1]/DIV[1]/H2[1]/BUTTON[1]/DIV[1]/DIV[10]/DIV[1]/BUTTON[1]").click()
+        driver.find_element(By.XPATH, "//*[@id='left-tabs-example-tabpane-second']/div[1]/div[1]/div/h2/button/div/div[10]/div/button").click()
         time.sleep(10)
 
 

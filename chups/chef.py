@@ -7,6 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 import time
 import pytest
+import allure
+@allure.severity(allure.severity_level.NORMAL)
 @pytest.fixture()
 def test_chef():
     global driver
@@ -22,9 +24,10 @@ def test_chef():
     yield
     print("Test Completed")
 
+@allure.severity(allure.severity_level.NORMAL)
 def test_cal(test_chef):
     driver.find_element(By.CSS_SELECTOR, '#calimg').click()
-    driver.find_element(By.XPATH, "//abbr[@aria-label='June 10, 2023']").click()
+    driver.find_element(By.XPATH, "//abbr[@aria-label='June 12, 2023']").click()
     driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
     time.sleep(2)
     driver.find_element(By.XPATH, "//li[contains(text(),'KOT')]").click()
@@ -38,7 +41,7 @@ def test_cal(test_chef):
     time.sleep(4)
     driver.find_element(By.XPATH, "//a[contains(text(),' Completed')]").click()
     time.sleep(4)
-@pytest.mark.skip()
+@allure.severity(allure.severity_level.NORMAL)
 def test_logout(test_chef):
     driver.find_element(By.XPATH, "//div[contains(@class, 'sidebar') and contains(@class, 'fixed-top')]/preceding-sibling::div[contains(@class, 'd-flex') and contains(@class, 'align-items-center')]/IMG[1]").click()
     time.sleep(2)
